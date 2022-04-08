@@ -1,0 +1,63 @@
+GET http://127.0.0.1:8000/api/v1/Measurement/
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8000/api/v1/Measurement/
+Content-Type: application/json
+
+{
+
+"value": 1353.0,
+"created_at": "2121-01-01 00:00:10",
+"updated_at": "2222-01-01 00:00:10",
+"project": 1
+}
+
+
+
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение датчиков
+GET {{baseUrl}}/sensors/
+Content-Type: application/json
+
+###
+
+# создание датчика
+POST {{baseUrl}}/sensors/
+Content-Type: application/json
+
+{
+  "name": "ESP32",
+  "description": "Датчик на кухне за холодильником"
+}
+
+###
+
+# обновление датчика
+PATCH {{baseUrl}}/sensors/1/
+Content-Type: application/json
+
+{
+  "description": "Перенес датчик на балкон"
+}
+
+###
+
+# добавление измерения
+POST {{baseUrl}}/measurements/
+Content-Type: application/json
+
+{
+  "sensor": 1,
+  "temperature": 22.3
+}
+
+###
+
+# получение информации по датчику
+GET {{baseUrl}}/sensors/1/
+Content-Type: application/json
